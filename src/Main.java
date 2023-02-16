@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
         Peasant hero1 = new Peasant();
@@ -12,7 +14,7 @@ public class Main {
         Warlock hero4 = new Warlock();
         System.out.println(hero4.getInfo());
 
-        Pikeman hero5 = new Pikeman();
+        Pickener hero5 = new Pickener();
         System.out.println(hero5.getInfo());
 
         CrossBowMan hero6 = new CrossBowMan();
@@ -21,5 +23,14 @@ public class Main {
         Monk hero7 = new Monk();
         System.out.println(hero7.getInfo());
 
+//        for (int i = 0; i < 10; i++) {
+//            System.out.println(getName());
+//        }
+
     }
+    private static String getName() {
+        String name = String.valueOf(Names.values()[new Random().nextInt(Names.values().length-1)]);
+        return name;
+    }
+
 }

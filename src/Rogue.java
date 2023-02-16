@@ -6,12 +6,13 @@ public class Rogue extends BaseHero {
 
 
     public Rogue() {
-        super(String.format("Hero_Rogue №%d", ++Rogue.number), /** Name */
-                BaseHero.r.nextInt(300, 400), /** HP */
-                BaseHero.r.nextInt(250, 350)); /** Speed */
-        this.maxEnergy = Rogue.r.nextInt(0, 100); /** Energy */
-        this.energy = maxEnergy;
+        super(String.format("Rogue №%d", ++Rogue.number),
+                BaseHero.r.nextInt(300, 400), 400,
+                BaseHero.r.nextInt(250, 350));
+        this.maxEnergy = 100; /** Energy */
+        this.energy = Rogue.r.nextInt(0, 100);
         this.weapon = String.format("Dagger "); /** Weapon type */
+        this.getMessage();
     }
 
     public int Attack() {
@@ -22,7 +23,15 @@ public class Rogue extends BaseHero {
     }
 
     public String getInfo() {
-        return String.format("%s, Energy: %d, Weapon: %s", super.getInfo(),
-                this.energy, this.weapon, this.getClass().getSimpleName());
+        return String.format("%s, MaxEnergy: %d, Energy: %d, Weapon: %s, Message: %s", super.getInfo(),
+                this.maxEnergy, this.energy, this.weapon, this.getMessage());
     }
+
+    @Override
+    public void die() {
+        System.out.println("Byyyyyyeeeeeee");
+    }
+
+    @Override
+    public String getMessage() {return "Now I'll cut you your wallet out of your pocket Wa-ha-ha-ha-ha";}
 }

@@ -6,12 +6,13 @@ public class Warlock extends BaseHero {
 
 
     public Warlock() {
-        super(String.format("Hero_Warlock №%d", ++Warlock.number), /** Name and id */
-                BaseHero.r.nextInt(150, 250), /** HP */
-                BaseHero.r.nextInt(150, 200)); /** Speed */
-        this.maxMana = Warlock.r.nextInt(250, 300); /** Mana */
-        this.mana = maxMana;
+        super(String.format("Warlock №%d", ++Warlock.number),
+                BaseHero.r.nextInt(150, 250), 250,
+                BaseHero.r.nextInt(150, 200));
+        this.maxMana = 300;
+        this.mana = Warlock.r.nextInt(250, 300);
         this.weapon = String.format("Staff "); /** Weapon type */
+        this.getMessage();
     }
 
     public int Attack() {
@@ -22,7 +23,18 @@ public class Warlock extends BaseHero {
     }
 
     public String getInfo() {
-        return String.format("%s, Energy: %d, Weapon: %s", super.getInfo(),
-                this.mana, this.weapon, this.getClass().getSimpleName());
+        return String.format("%s, MaxMana: %d, Mana: %d, Weapon: %s, Message: %s", super.getInfo(),
+                this.maxMana, this.mana, this.weapon, this.getMessage());
+    }
+
+    @Override
+    public void die() {
+        System.out.println("Diiiiieeeee");
+    }
+
+    @Override
+    public String getMessage() {
+        return "I will call you such a she-devil that you will have to give me your soul for her. " +
+                "Mortal worm wahahahahahahahah";
     }
 }

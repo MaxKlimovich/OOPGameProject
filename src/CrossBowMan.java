@@ -1,4 +1,4 @@
-public class CrossBowMan extends BaseHero {
+public class CrossBowMan extends DistantBattle {
 
     private int energy;
     private int maxEnergy;
@@ -6,12 +6,14 @@ public class CrossBowMan extends BaseHero {
 
 
     public CrossBowMan() {
-        super(String.format("Hero_CrossBowMan №%d", ++CrossBowMan.number), /** Name and id */
-                BaseHero.r.nextInt(150, 250), /** HP */
-                BaseHero.r.nextInt(100, 150)); /** Speed */
+        super(String.format("BowMan №%d", ++CrossBowMan.number),
+                BaseHero.r.nextInt(150, 250), 150,
+                BaseHero.r.nextInt(100, 150),  15,20, 300);
         this.maxEnergy = CrossBowMan.r.nextInt(0, 100); /** Energy */
         this.energy = maxEnergy;
         this.weapon = String.format("CrossBow "); /** Weapon type */
+        this.getMessage();
+
     }
 
     public int Attack() {
@@ -22,7 +24,17 @@ public class CrossBowMan extends BaseHero {
     }
 
     public String getInfo() {
-        return String.format("%s, Energy: %d, Weapon: %s", super.getInfo(),
-                this.energy, this.weapon, this.getClass().getSimpleName());
+        return String.format("%s, Energy: %d, Weapon: %s, Shot: %d, MaxShot: %d, Distance: %d, Message: %s.",
+                super.getInfo(), this.energy, this.weapon, super.shot, super.maxShot,
+                super.distance, this.getMessage());
+    }
+
+    @Override
+    public void die() {
+        System.out.println("Bueeee");
+    }
+
+    @Override
+    public String getMessage() {return "i am Humorist";
     }
 }

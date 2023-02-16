@@ -6,12 +6,13 @@ public class Monk extends BaseHero{
 
 
         public Monk() {
-            super(String.format("Hero_Monk №%d", ++Monk.number), /** Name and id */
-                    BaseHero.r.nextInt(250, 500), /** HP */
-                    BaseHero.r.nextInt(150, 200)); /** Speed */
-            this.maxElixir = Monk.r.nextInt(300, 450); /** Mana */
-            this.elixir = maxElixir;
+            super(String.format("Monk №%d", ++Monk.number),
+                    BaseHero.r.nextInt(250, 500), 500,
+                    BaseHero.r.nextInt(150, 200));
+            this.maxElixir = 450;
+            this.elixir = Monk.r.nextInt(300, 450);
             this.weapon = String.format("Orb "); /** Weapon type */
+            this.getMessage();
         }
 
         public int Attack() {
@@ -22,8 +23,18 @@ public class Monk extends BaseHero{
         }
 
         public String getInfo() {
-            return String.format("%s, Energy: %d, Weapon: %s", super.getInfo(),
-                    this.elixir, this.weapon, this.getClass().getSimpleName());
+            return String.format("%s, maxElixir: %d, Elixir: %d, Weapon: %s, Message: %s", super.getInfo(),
+                    this.maxElixir, this.elixir, this.weapon, this.getMessage());
         }
+
+    @Override
+    public void die() {
+        System.out.println("Hello new epic day");
     }
+
+    @Override
+    public String getMessage() {
+        return "I'll wait on the mountains when you're ready to learn.";
+    }
+}
 

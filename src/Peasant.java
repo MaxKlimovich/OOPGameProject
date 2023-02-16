@@ -7,12 +7,13 @@ public class Peasant extends BaseHero {
 
 
     public Peasant() {
-        super(String.format("Hero_Peasant №%d", ++Peasant.number), /** Name and id */
-                Peasant.r.nextInt(200, 400), /** HP */
-                BaseHero.r.nextInt(50, 150)); /** Speed */
-        this.maxEnergy = Peasant.r.nextInt(50, 100); /** Energy */
-        this.energy = maxEnergy;
+        super(String.format("Peasant №%d", ++Peasant.number),
+                Peasant.r.nextInt(200, 400), 400,
+                BaseHero.r.nextInt(50, 150));
+        this.maxEnergy = 100;
+        this.energy = Peasant.r.nextInt(50, 100);
         this.weapon = String.format("Pitchfork "); /** Weapon type */
+        this.getMessage();
     }
 
     public int Attack() {
@@ -23,7 +24,17 @@ public class Peasant extends BaseHero {
     }
 
     public String getInfo() {
-        return String.format("%s, Energy: %d, Weapon: %s", super.getInfo(),
-                this.energy, this.weapon, this.getClass().getSimpleName());
+        return String.format("%s, MaxEnergy: %d; Energy: %d, Weapon: %s, Message: %s", super.getInfo(),
+                this.maxEnergy, this.energy, this.weapon, this.getMessage());
+    }
+
+    @Override
+    public void die() {
+        System.out.println("FUCK");
+    }
+
+    @Override
+    public String getMessage() {
+        return "I'll take your shorty and clean it, and then I'll go to the top of all your beds.";
     }
 }
