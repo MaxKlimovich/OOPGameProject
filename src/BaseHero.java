@@ -3,10 +3,6 @@ import java.util.Random;
 public abstract class BaseHero implements GameInterface{
     static int number;
     static Random r;
-
-    public void setHp(int hp) {if (hp >= 0) this.hp = hp;}
-    public int getHp() {return hp;}
-
     protected String name;
     private  int hp;
     protected int maxHp;
@@ -54,9 +50,21 @@ public abstract class BaseHero implements GameInterface{
                 this.name, this.hp, this.maxHp, this.attack, this.damageMin, this.damageMax, this.defense,
                 this.speed, this.coordinataX, this.coordinataY, this.getClass().getSimpleName());
     }
+
+
+    public String toString() {
+        return String.format ("\nName: %s, Hp: %d, MaxHp: %d, Attack: %d, Defense: %d, Speed: %d",
+                this.name, this.hp, this.maxHp, this.attack, this.defense, this.speed);
+    }
+
+    public void setHp(int hp) {if (hp >= 0) this.hp = hp;}
     public void healer(int Hp) {
         this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
     }
+    public int getHp() {
+        return hp;
+    }
+
     public void GetDamage(int damage) {
         if (this.hp - damage > 0) {
             this.hp -= damage;
@@ -73,6 +81,9 @@ public abstract class BaseHero implements GameInterface{
     public String getMessage() {return "I am I";}
 
 
+    public int getSpeed() {
+        return speed;
+    }
 }
 
 
