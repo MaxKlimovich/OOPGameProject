@@ -7,8 +7,8 @@ public class Monk extends BaseHero{
 
         public Monk() {
             super(String.format("Monk №%d", ++Monk.number),
-                    BaseHero.r.nextInt(250, 500), 500,
-                    BaseHero.r.nextInt(150, 200));
+                    BaseHero.r.nextInt(1, 30), 30, 12, -4,
+                    -4, 7, 5, 13, 3);
             this.maxElixir = 450;
             this.elixir = Monk.r.nextInt(300, 450);
             this.weapon = String.format("Orb "); /** Weapon type */

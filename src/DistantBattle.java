@@ -3,10 +3,12 @@ public abstract class DistantBattle extends BaseHero {
     int maxShot;
     int distance;
 
-    public DistantBattle(String name, int hp, int maxHp, int speed, int shot, int maxShot, int distance) {
-        super(name, hp, maxHp, speed);
+    public DistantBattle(String name, int hp, int maxHp, int attack, int damageMin,
+                         int damageMax, int defense, int speed, int coordinateX, int coordinateY,
+                         int shot, int maxShot, int distance) {
+        super(name, hp, maxHp, attack, damageMin, damageMax, defense, speed, coordinateX, coordinateY);
         this.shot = shot;
-        this.maxShot = shot;
+        this.maxShot = maxShot;
         this.distance = distance;
     }
 
