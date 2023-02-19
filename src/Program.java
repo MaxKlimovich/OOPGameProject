@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 
@@ -75,11 +76,15 @@ public class Program {
         for (int i = 0; i < team.size(); i++) {
             allArray.add(team2.get(i));
         }
-
-        @Override
-        public String getString() {
-            return String.format(allArray);
-        }
+        allArray.sort(new Comparator<BaseHero>() {
+            @Override
+            public int compare(BaseHero o1, BaseHero o2) {
+                if (o2.getSpeed() == o1.getSpeed()){
+                    return o2.getHp() - o1.getHp();
+                }
+                return o2.getSpeed() - o1.getSpeed();
+            }
+        });
 
         System.out.println(allArray.toString());
 
