@@ -7,9 +7,9 @@ public class Sniper extends DistantBattle {
 
     public Sniper() {
         super(String.format("Sniper №%d", ++Sniper.number),
-                BaseHero.r.nextInt(100, 200), 200,
-                BaseHero.r.nextInt(150, 300),
-                BaseHero.r.nextInt(0, 20), 20, 300);
+                BaseHero.r.nextInt(1, 15), 15,
+                12, 8, 10, 10,
+                9, 4, 5, 32, 32, 400);
         this.maxEnergy = 100; /** Energy */
         this.energy = Sniper.r.nextInt(0, 100);
         this.weapon = String.format("Gun "); /** Weapon type */
@@ -24,8 +24,9 @@ public class Sniper extends DistantBattle {
     }
 
     public String getInfo() {
-        return String.format("%s, MaxEnergy: %d, Energy: %d, Weapon: %s, Message: %s", super.getInfo(), this.maxEnergy,
-                this.energy,  this.weapon, getMessage());
+        return String.format("%s, Energy: %d, Weapon: %s, Shot: %d, MaxShot: %d, Distance: %d, Message: %s.",
+                super.getInfo(), this.energy, this.weapon, super.maxShot, super.maxShot,
+                super.distance, this.getMessage());
     }
 
     @Override
