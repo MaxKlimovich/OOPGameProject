@@ -87,59 +87,5 @@ public class Program {
         });
 
         System.out.println(allArray.toString());
-
-
-//        ArrayList allArray = new ArrayList<>(team);
-//        allArray.add(team2);
-//
-//        System.out.println(allArray);
-
     }
-
-
 }
-
-
-//    public static void main(String[] args) {
-////        List<Integer> nums = new ArrayList<>();
-////        nums.add(1);
-////        nums.add(123);
-////        nums.add(1234);
-////        nums.add(12345);
-////        nums.add(123456);
-//
-//
-//        Random r = new Random();
-////        List<Integer> numbers= new ArrayList<>();
-////        for (int i = 0; i < 10; i++) {
-////            numbers.add(r.nextInt(1, 10));
-////        }
-////        System.out.println(numbers);
-////        Collections.sort(numbers);
-////        System.out.println(numbers);
-//
-//
-//
-//        List<Teams> db = new ArrayList<>();
-//        for (int i = 0; i < 5; i++) {
-//            db.add(new Teams("name" +i, "second name" +i,
-//                    r.nextInt(18, 35), r.nextInt(10000)));
-//        }
-//        System.out.println(db);
-//        db.sort(new SalaryComporator());
-////        Collections.sort(db);
-//        System.out.println(db);
-//
-//
-//
-////        Teams teams = new Teams(
-////                "firstName", "secondName", 24, 1222 );
-////
-////        Iterator<String> components = teams;
-////        while (components.hasNext()){
-////            System.out.println(teams.next());
-////        }
-//
-//
-//    }
-//}
