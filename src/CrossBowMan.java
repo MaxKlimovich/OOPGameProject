@@ -6,9 +6,10 @@ public class CrossBowMan extends DistantBattle {
 
 
     public CrossBowMan() {
-        super(String.format("BowMan №%d", ++CrossBowMan.number),
-                BaseHero.r.nextInt(150, 250), 150,
-                BaseHero.r.nextInt(100, 150),  15,20, 300);
+        super(String.format("CrossBowMan №%d", ++CrossBowMan.number),
+                BaseHero.r.nextInt(150, 250), 10,
+                6, 2, 3, 3,
+                4, 16, 200, 16, 16, 200);
         this.maxEnergy = CrossBowMan.r.nextInt(0, 100); /** Energy */
         this.energy = maxEnergy;
         this.weapon = String.format("CrossBow "); /** Weapon type */
@@ -25,7 +26,7 @@ public class CrossBowMan extends DistantBattle {
 
     public String getInfo() {
         return String.format("%s, Energy: %d, Weapon: %s, Shot: %d, MaxShot: %d, Distance: %d, Message: %s.",
-                super.getInfo(), this.energy, this.weapon, super.shot, super.maxShot,
+                super.getInfo(), this.energy, this.weapon, super.maxShot, super.maxShot,
                 super.distance, this.getMessage());
     }
 
@@ -35,6 +36,7 @@ public class CrossBowMan extends DistantBattle {
     }
 
     @Override
-    public String getMessage() {return "i am Humorist";
+    public String getMessage() {
+        return "i am Humorist";
     }
 }
