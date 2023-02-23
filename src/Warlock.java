@@ -5,10 +5,10 @@ public class Warlock extends BaseHero {
     private String weapon;
 
 
-    public Warlock() {
+    public Warlock(String name, int x, int y) {
         super(String.format("Warlock №%d", ++Warlock.number),
                 BaseHero.r.nextInt(1, 30), 30,
-                17, -5, -5, 12, 9, 3,1);
+                17, -5, -5, 12, 9, x,y);
         this.maxMana = 300;
         this.mana = Warlock.r.nextInt(250, 300);
         this.weapon = String.format("Staff "); /** Weapon type */
