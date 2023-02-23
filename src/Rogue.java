@@ -5,10 +5,10 @@ public class Rogue extends BaseHero {
     private String weapon;
 
 
-    public Rogue() {
+    public Rogue(String name, int x, int y) {
         super(String.format("Rogue №%d", ++Rogue.number),
                 BaseHero.r.nextInt(1, 10), 10, 8, 2,
-                4, 3, 6, 1, 4);
+                4, 3, 6, x, y);
         this.maxEnergy = 100; /** Energy */
         this.energy = Rogue.r.nextInt(0, 100);
         this.weapon = String.format("Dagger "); /** Weapon type */
