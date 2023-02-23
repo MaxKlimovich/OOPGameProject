@@ -9,53 +9,59 @@ public class Program {
         Random rnd = new Random();
 
         System.out.println("Team #1");
-        ArrayList<BaseHero> team = new ArrayList<>();
+        int x1 = 1;
+        int y1 = 0;
+        ArrayList<BaseHero> team1 = new ArrayList<>();
         for (int i = 0; i < teamCount; i++) {
+            y1++;
             int val1 = rnd.nextInt(4);
             switch (val1) {
                 case 0:
-                    team.add(new Monk());
+                    team1.add(new Monk("Monk", x1, y1));
                     break;
                 case 1:
-                    team.add(new Peasant());
+                    team1.add(new Peasant("Peasant", x1, y1));
                     break;
                 case 2:
-                    team.add(new Pickener());
+                    team1.add(new Pickener("Pickener", x1, y1));
                     break;
                 case 3:
-                    team.add(new CrossBowMan());
+                    team1.add(new CrossBowMan("BowMan", x1, y1));
                     break;
 //                case 4:
-//                    team.add(new Sniper());
+//                    team1.add(new Sniper());
 //                    break;
 //                case 5:
-//                    team.add(new Rogue());
+//                    team1.add(new Rogue());
 //                    break;
 //                case 6:
-//                    team.add(new Warlock());
+//                    team1.add(new Warlock());
 //                    break;
             }
-            System.out.println(team.get(i).getInfo());
+            System.out.println(team1.get(i).getInfo());
         }
         System.out.println("\n------------------------------------------------------------\n");
 
-        System.out.println("Team #2 ");
 
+        System.out.println("Team #2 ");
+        int x2 = 10;
+        int y2 = 0;
         ArrayList<BaseHero> team2 = new ArrayList<>();
         for (int i = 0; i < teamCount; i++) {
+            y2++;
             int val2 = rnd.nextInt(4);
             switch (val2) {
                 case 0:
-                    team2.add(new Sniper());
+                    team2.add(new Sniper("Sniper", x2, y2));
                     break;
                 case 1:
-                    team2.add(new Warlock());
+                    team2.add(new Warlock("Warlock", x2, y2));
                     break;
                 case 2:
-                    team2.add(new Rogue());
+                    team2.add(new Rogue("Rogue", x2, y2));
                     break;
                 case 3:
-                    team2.add(new Peasant());
+                    team2.add(new Peasant("Peasant", x2, y2));
                     break;
 //                case 4:
 //                    team2.add(new CrossBowMan());
@@ -72,20 +78,20 @@ public class Program {
 
         System.out.println("\n------------------------------------------------------------\n");
 
-        ArrayList<BaseHero> allArray = new ArrayList<>(team);
-        for (int i = 0; i < team.size(); i++) {
+        System.out.println("Sorted team1 & team2: ");
+        ArrayList<BaseHero> allArray = new ArrayList<>(team1);
+        for (int i = 0; i < team1.size(); i++) {
             allArray.add(team2.get(i));
         }
         allArray.sort(new Comparator<BaseHero>() {
             @Override
             public int compare(BaseHero o1, BaseHero o2) {
-                if (o2.getSpeed() == o1.getSpeed()){
-                    return o2.getHp() - o1.getHp();
+                if (o2.getSpeed() == o1.getSpeed()) {
+                    return o2.hp - o1.hp;
                 }
                 return o2.getSpeed() - o1.getSpeed();
             }
         });
-
         System.out.println(allArray.toString());
     }
 }
