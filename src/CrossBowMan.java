@@ -5,11 +5,11 @@ public class CrossBowMan extends DistantBattle {
     private String weapon;
 
 
-    public CrossBowMan() {
-        super(String.format("CrossBowMan №%d", ++CrossBowMan.number),
-                BaseHero.r.nextInt(150, 250), 10,
+    public CrossBowMan(String name, int x, int y) {
+        super(String.format("BowMan №%d", ++CrossBowMan.number),
+                BaseHero.r.nextInt(1, 10), 10,
                 6, 2, 3, 3,
-                4, 16, 200, 16, 16, 200);
+                4, x, y, 16, 16, 200);
         this.maxEnergy = CrossBowMan.r.nextInt(0, 100); /** Energy */
         this.energy = maxEnergy;
         this.weapon = String.format("CrossBow "); /** Weapon type */
