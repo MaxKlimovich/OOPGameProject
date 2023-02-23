@@ -5,10 +5,10 @@ public class Pickener extends BaseHero {
     private String weapon;
 
 
-    public Pickener() {
+    public Pickener(String name, int x, int y) {
         super(String.format("Pickener №%d", ++Pickener.number),
                 BaseHero.r.nextInt(1, 10), 10, 4, 1, 3, 5,
-                4, 5, 4);
+                4, x, y);
         this.maxAgro = 100; /** Agro */
         this.agro = Pickener.r.nextInt(0, 100);
         this.weapon = String.format("Pike "); /** Weapon type */
