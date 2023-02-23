@@ -7,10 +7,10 @@ public class Peasant extends BaseHero {
 
 
 
-    public Peasant() {
+    public Peasant(String name, int x, int y) {
         super(String.format("Peasant №%d", ++Peasant.number),
                 BaseHero.r.nextInt(1, 3), 3, 1, 1, 1, 1,
-                3, 1, 1);
+                3, x, y);
         this.expressDelivery = 1;
         this.maxEnergy = 100;
         this.energy = Peasant.r.nextInt(50, 100);
