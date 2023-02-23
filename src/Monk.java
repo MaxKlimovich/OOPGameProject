@@ -5,10 +5,10 @@ public class Monk extends BaseHero{
         private String weapon;
 
 
-        public Monk() {
+        public Monk(String name, int x, int y) {
             super(String.format("Monk №%d", ++Monk.number),
                     BaseHero.r.nextInt(1, 30), 30, 12, -4,
-                    -4, 7, 5, 13, 3);
+                    -4, 7, 5, x, y);
             this.maxElixir = 450;
             this.elixir = Monk.r.nextInt(300, 450);
             this.weapon = String.format("Orb "); /** Weapon type */
