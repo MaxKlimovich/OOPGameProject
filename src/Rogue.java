@@ -1,37 +1,25 @@
-public class Rogue extends BaseHero {
+import java.util.ArrayList;
 
-    private int energy;
-    private int maxEnergy;
-    private String weapon;
+public class Rogue extends BaseHero {
 
 
     public Rogue(String name, int x, int y) {
-        super(String.format("Rogue №%d", ++Rogue.number),
-                BaseHero.r.nextInt(1, 10), 10, 8, 2,
-                4, 3, 6, x, y);
-        this.maxEnergy = 100; /** Energy */
-        this.energy = Rogue.r.nextInt(0, 100);
-        this.weapon = String.format("Dagger "); /** Weapon type */
-        this.getMessage();
+        super(name, 6, 10, 3, 8, 10, x, y, 12);
     }
 
-    public int Attack() {
-        int damage = Rogue.r.nextInt(20, 30);
-        this.energy -= (int) (damage * 0.8);
-        if (energy < 0) return 0;
-        else return damage;
+    @Override
+    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
+        super.step(team1, team2);
+    }
+    @Override
+    public String toString() {
+        return String.format("BowMan: %s | Hp: %d |  Speed: %d | ATK: %d-%d  |  DEF: %d  " +
+                        "|  (X,Y): (%d,%d)  | Status: %s\n",
+                this.name, this.hp, this.speed, this.damageMin, this.damageMax,
+                this.defense, this.pos.x, this.pos.y, this.state);
     }
 
     public String getInfo() {
-        return String.format("%s, MaxEnergy: %d, Energy: %d, Weapon: %s, Message: %s", super.getInfo(),
-                this.maxEnergy, this.energy, this.weapon, this.getMessage());
+        return "Rogue";
     }
-
-    @Override
-    public void die() {
-        System.out.println("Byyyyyyeeeeeee");
-    }
-
-    @Override
-    public String getMessage() {return "Now I'll cut you your wallet out of your pocket Wa-ha-ha-ha-ha";}
 }
