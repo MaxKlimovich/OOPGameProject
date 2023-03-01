@@ -1,6 +1,5 @@
 public class Vector2D {
-    public int x;
-    public int y;
+    protected int x, y;
 
     public Vector2D(int x, int y) {
         this.x = x;
@@ -8,7 +7,7 @@ public class Vector2D {
     }
 
 
-    public static int getDistance(BaseHero h1, BaseHero h2){
-        return (int) Math.sqrt((h1.pos.x - h2.pos.x)^2 + (h1.pos.y - h2.pos.y)^2);
+    protected double getDistance(Vector2D oponent){
+        return Math.sqrt(Math.pow(x - oponent.x,2) + Math.pow(y - oponent.y,2));
     }
 }
