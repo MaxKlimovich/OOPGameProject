@@ -1,39 +1,26 @@
-public class Peasant extends BaseHero {
+import java.util.ArrayList;
 
-    private int expressDelivery;
-    private int energy;
-    private int maxEnergy;
-    private String weapon;
+public class Fermer extends BaseHero {
+    protected boolean delivery;
 
-
-
-    public Peasant(String name, int x, int y) {
-        super(String.format("Peasant №%d", ++Peasant.number),
-                BaseHero.r.nextInt(1, 3), 3, 1, 1, 1, 1,
-                3, x, y);
-        this.expressDelivery = 1;
-        this.maxEnergy = 100;
-        this.energy = Peasant.r.nextInt(50, 100);
-        this.weapon = String.format("Pitchfork "); /** Weapon type */
-        this.getMessage();
+    public Fermer(String name, int x, int y) {
+        super(name, 3, 1, 1, 1, 1, x, y, 1);
+        this.delivery = true;
     }
 
-    public int Attack() {
-        int damage = Peasant.r.nextInt(20, 30);
-        this.energy -= (int) (damage * 0.8);
-        if (energy < 0) return 0;
-        else return damage;
+    @Override
+    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
+        if (!state.equals("Die")) state = "Stand";
+        System.out.println("Fermer " + name + " Free " );
+    }
+    @Override
+    public String toString() {
+        return String.format("Fermer: %s | Hp: %d | Speed: %d | ATK: %d-%d | DEF: %d | (X,Y): (%d,%d) | Status: %s\n",
+                this.name, this.hp, this.speed, this.damageMin, this.damageMax,
+                this.defense, this.pos.x, this.pos.y, this.state);
     }
 
     public String getInfo() {
-        return String.format("%s, Express Delivery: %d, MaxEnergy: %d; Energy: %d, Weapon: %s, Message: %s",
-                super.getInfo(), this.expressDelivery, this.maxEnergy, this.energy, this.weapon, this.getMessage());
-    }
-
-
-
-    @Override
-    public String getMessage() {
-        return "There is a host!";
+        return "Fermer";
     }
 }
