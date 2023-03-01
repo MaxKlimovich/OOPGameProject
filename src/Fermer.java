@@ -30,10 +30,7 @@ public class Peasant extends BaseHero {
                 super.getInfo(), this.expressDelivery, this.maxEnergy, this.energy, this.weapon, this.getMessage());
     }
 
-    @Override
-    public void die() {
-        System.out.println("aaaaaaa");
-    }
+
 
     @Override
     public String getMessage() {

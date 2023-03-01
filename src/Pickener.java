@@ -1,37 +1,23 @@
+import java.util.ArrayList;
+
 public class Pickener extends BaseHero {
-
-    private int agro;
-    private int maxAgro;
-    private String weapon;
-
-
     public Pickener(String name, int x, int y) {
-        super(String.format("Pickener №%d", ++Pickener.number),
-                BaseHero.r.nextInt(1, 10), 10, 4, 1, 3, 5,
-                4, x, y);
-        this.maxAgro = 100; /** Agro */
-        this.agro = Pickener.r.nextInt(0, 100);
-        this.weapon = String.format("Pike "); /** Weapon type */
-        this.getMessage();
+        super(name, 4, 10, 5, 1, 3, x, y, 4);
     }
 
-    public int Attack() {
-        int damage = Pickener.r.nextInt(20, 30);
-        this.agro -= (int) (damage * 0.8);
-        if (agro < 0) return 0;
-        else return damage;
+    @Override
+    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
+        super.step(team1, team2);
+    }
+    @Override
+    public String toString() {
+        return String.format("BowMan: %s | Hp: %d |  Speed: %d | ATK: %d-%d  |  DEF: %d  " +
+                        "|  (X,Y): (%d,%d)  | Status: %s\n",
+                this.name, this.hp, this.speed, this.damageMin, this.damageMax,
+                this.defense, this.pos.x, this.pos.y, this.state);
     }
 
     public String getInfo() {
-        return String.format("%s, MaxAgro: %d, Agro: %d, Weapon: %s, Message: %s", super.getInfo(),
-                this.maxAgro, this.agro, this.weapon, this.getMessage());
+        return "Pickener";
     }
-
-    @Override
-    public void die() {
-        System.out.println("Good Night");
-    }
-
-    @Override
-    public String getMessage() {return "aaaaayyyuiuuuufffufffggggg";}
 }
