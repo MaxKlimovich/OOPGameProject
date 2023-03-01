@@ -1,13 +1,7 @@
 import java.util.ArrayList;
 
-public class CrossBowMan extends DistantBattle {
-
-    private int energy;
-    private int maxEnergy;
-    private String weapon;
-
-
-    public CrossBowMan(String name, int x, int y) {
+public class BowMan extends DistantBattle {
+    public BowMan(String name, int x, int y) {
         super(name, 4, 10, 3, 2, 3, x, y, 6,16);
     }
 
@@ -17,10 +11,10 @@ public class CrossBowMan extends DistantBattle {
     }
     @Override
     public String toString() {
-        return String.format("Sniper: %s | Hp: %d |  Speed: %d  |  Shoot: %d  " +
-                        "| ATK: %d-%d  |  DEF: %d  |  (X,Y): (%d,%d)  | Status: %s\n",
-                this.name, this.hp, this.speed, this.cartridges, this.damageMin,
-                this.damageMax, this.defense, this.pos.x, this.pos.y, this.state);
+        return String.format("BowMan: %s | Hp: %d | Speed: %d | ATK: %d-%d | DEF: %d | (X,Y): (%d,%d) | Status: %s " +
+                        "| Cartriges: %d\n",
+                this.name, this.hp, this.speed, this.damageMin, this.damageMax, this.defense,
+                this.pos.x, this.pos.y, this.state,  this.cartridges);
     }
     public String getInfo() {
         return "BowMan";
