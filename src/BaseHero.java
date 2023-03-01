@@ -2,108 +2,72 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public abstract class BaseHero implements GameInterface {
-    static int number;
-    static Random r;
-
     protected String name;
     protected int hp;
-    protected int maxHp;
-    protected int attack;
-    protected int damageMin;
-    protected int damageMax;
-    protected int defense;
-    protected int speed;
-    public Vector2D pos;
+    protected int speed, attack;
+    protected int maxHp, defense, damageMin, damageMax;
+    protected String state;
+    protected Vector2D pos;
 
 
-    static {
-        BaseHero.number = 0;
-        BaseHero.r = new Random();
-    }
-
-    public BaseHero(String name, int hp, int maxHp, int attack, int damageMin, int damageMax,
-                    int defense, int speed, int x, int y) {
+    public BaseHero(String name, int speed, int maxHp, int defense, int damageMin, int damageMax,
+                    int x, int y, int attack) {
         this.name = name;
-        this.hp = hp;
+        this.speed = speed;
         this.maxHp = maxHp;
-        this.attack = attack;
+        this.hp = maxHp;
         this.defense = defense;
         this.damageMin = damageMin;
         this.damageMax = damageMax;
-        this.speed = speed;
         pos = new Vector2D(x, y);
-
-
+        this.attack = attack;
+        state = "Stand";
+    }
+    public static String getName() { // random name
+        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
 
-    public BaseHero() {
-        this(String.format("Hero_BaseHero #%d", ++BaseHero.number), /** Name */
-                BaseHero.r.nextInt(1, 30), 30, /** HP and MaxHP */
-                BaseHero.r.nextInt(1, 17), /** Attack */
-                10, 10, /** Damage Min & Max */
-                BaseHero.r.nextInt(1, 12), /** Defense */
-                BaseHero.r.nextInt(3, 9), /** Speed */
-                1, 1); /** coordinat x, y */
-
-
+    public String toString() {
+        return String.format("Name: %3s | Hp: %2d | Speed: %d | Defense: %d | X,Y: (%d,%d) | State: %s\n",
+                this.name, this.hp, this.speed, this.defense, this.pos.x, this.pos.y, this.state);
     }
 
     public String getInfo() {
-        return String.format("Name: %s, Hp: %d, MaxHp: %d, Attack: %d, DamageMin: %d, DamageMax: %d," +
-                        " Defense: %d, Speed: %d, VectorX: %d, VectorY: %d, Type: %s",
-                this.name, this.hp, this.maxHp, this.attack, this.damageMin, this.damageMax, this.defense,
-                this.speed, pos.x, pos.y, this.getClass().getSimpleName());
+        return "Name: " + getName() + "HP: " + this.hp;
     }
-
-
-    public String toString() {
-        return String.format("Name: %5s | Hp: %2d | MaxHp: %d | Attack: %d | Defense: %d | Speed: %d | " +
-                        "X,Y: (%d,%d)\n",
-                this.name, this.hp, this.maxHp, this.attack, this.defense, this.speed, pos.x, pos.y);
-    }
-
-    public void setHp(int hp) {if (hp >= 0) this.hp = hp;}
-    public void healer(int Hp) {
-        this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
-    }
-
-
-    public void GetDamage(int takenDamage) {
-        if (this.hp - takenDamage > 0) {
-            this.hp -= takenDamage;
-        }
-        else { die(); }
-    }
-    public abstract void die();
+    public int getSpeed() {return speed; }
+    public float getHp() {return hp; }
 
     @Override
-    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
-        GameInterface.super.step(team1, team2);
+    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) { }
+
+    protected int findNearest(ArrayList<BaseHero> team) {
+        double min = 100;
+        int index = 0;
+        for (int i = 0; i < team.size(); i++) {
+            if (min > pos.getDistance(team.get(i).pos) & !team.get(i).state.equals("Die")) {
+                index = i;
+                min = pos.getDistance(team.get(i).pos);
+            }
+        }
+        return index;
     }
 
-//    public int findNearest(ArrayList<BaseHero> team) {
-//        double min = 100;
-//        int index = 0;
-//        for (int i = 0; i < team.size(); i++) {
-//            if (min > pos.getDistance(team.get(i).pos)) {
-//                index = i;
-//                min = pos.getDistance(team.get(i).pos);
-//            }
-//        }
-//        return index;
+    protected void getDamage(float damage) {
+        hp -= damage;
+        if (hp > maxHp) hp = maxHp;
+        if (hp < 0) state = "Die";
+        System.out.println(getInfo() + " " + name + " Death ");
+        state = "Die";
+    }
+
+
+
+//    public void healer(int Hp) {
+//        this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
 //    }
 
 
-
-    @Override
-    public String getMessage() {
-        return "I am I";
-    }
-
-
-    public int getSpeed() {
-        return speed;
-    }
 }
 
 
