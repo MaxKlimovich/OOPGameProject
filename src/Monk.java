@@ -1,40 +1,22 @@
+import java.util.ArrayList;
+
 public class Monk extends BaseHero{
-
-        private int elixir;
-        private int maxElixir;
-        private String weapon;
-
-
         public Monk(String name, int x, int y) {
-            super(String.format("Monk №%d", ++Monk.number),
-                    BaseHero.r.nextInt(1, 30), 30, 12, -4,
-                    -4, 7, 5, x, y);
-            this.maxElixir = 450;
-            this.elixir = Monk.r.nextInt(300, 450);
-            this.weapon = String.format("Orb "); /** Weapon type */
-            this.getMessage();
+            super(name, 5, 30, 7, -4, -4, x, y, 12);
         }
-
-        public int Attack() {
-            int damage = Monk.r.nextInt(20, 30);
-            this.elixir -= (int) (damage * 0.8);
-            if (elixir < 0) return 0;
-            else return damage;
+        @Override
+        public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
+            super.step(team1, team2);
+        }
+        @Override
+        public String toString() {
+            return String.format("Monk: %s | Hp: %d | Speed: %d | ATK: %d-%d | DEF: %d | (X,Y): (%d,%d) | Status: %s\n",
+                    this.name, this.hp, this.speed, this.damageMin, this.damageMax,
+                    this.defense, this.pos.x, this.pos.y, this.state);
         }
 
         public String getInfo() {
-            return String.format("%s, maxElixir: %d, Elixir: %d, Weapon: %s, Message: %s", super.getInfo(),
-                    this.maxElixir, this.elixir, this.weapon, this.getMessage());
+            return "Monk";
         }
-
-    @Override
-    public void die() {
-        System.out.println("Hello new epic day");
-    }
-
-    @Override
-    public String getMessage() {
-        return "I'll wait on the mountains when you're ready to learn.";
-    }
 }
 
