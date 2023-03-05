@@ -1,3 +1,5 @@
+package Unit;
+
 import java.util.ArrayList;
 
 public abstract class Magic extends BaseHero {

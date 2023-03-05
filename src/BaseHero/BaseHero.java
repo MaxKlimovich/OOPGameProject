@@ -1,3 +1,5 @@
+package Unit;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,6 +10,7 @@ public abstract class BaseHero implements GameInterface {
     protected int maxHp, defense, damageMin, damageMax;
     protected String state;
     protected Vector2D pos;
+    protected static int heroCnt;
 
 
     public BaseHero(String name, int speed, int maxHp, int defense, int damageMin, int damageMax,
@@ -22,13 +25,14 @@ public abstract class BaseHero implements GameInterface {
         pos = new Vector2D(x, y);
         this.attack = attack;
         state = "Stand";
+        heroCnt++;
     }
     public static String getName() { // random name
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
 
     public String toString() {
-        return String.format("Name: %3s | Hp: %2d | Speed: %d | Defense: %d | X,Y: (%d,%d) | State: %s\n",
+        return String.format("Name: %5s | Hp: %2d | Speed: %d | Defense: %d | X,Y: (%d,%d) | State: %s\n",
                 this.name, this.hp, this.speed, this.defense, this.pos.x, this.pos.y, this.state);
     }
 

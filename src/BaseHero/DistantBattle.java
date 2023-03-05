@@ -1,5 +1,6 @@
+package Unit;
+
 import java.util.ArrayList;
-import java.util.Random;
 
 public abstract class DistantBattle extends BaseHero {
 
@@ -27,7 +28,7 @@ public abstract class DistantBattle extends BaseHero {
 //            if (team1.get(i).getInfo().toString().split(":")[0].equals("Peasant" &&
 //            team1.get(i).state.equals("Stand")) { //Можно писать и вот так
             if (team1.get(i) instanceof Fermer && team1.get(i).state.equals("Stand ")) {
-                System.out.println("Fermer " + team1.get(i).name + "Busy ");
+                System.out.println("Unit.Fermer " + team1.get(i).name + "Busy ");
                 team1.get(i).state = "Busy ";
                 return;
             }

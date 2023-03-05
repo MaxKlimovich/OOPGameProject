@@ -1,3 +1,7 @@
+package Unit;
+
+import Unit.BaseHero;
+
 import java.util.ArrayList;
 
 public class Rogue extends BaseHero {
@@ -13,13 +17,13 @@ public class Rogue extends BaseHero {
     }
     @Override
     public String toString() {
-        return String.format("BowMan: %s | Hp: %d |  Speed: %d | ATK: %d-%d  |  DEF: %d  " +
+        return String.format("Unit.BowMan: %s | Hp: %d |  Speed: %d | ATK: %d-%d  |  DEF: %d  " +
                         "|  (X,Y): (%d,%d)  | Status: %s\n",
                 this.name, this.hp, this.speed, this.damageMin, this.damageMax,
                 this.defense, this.pos.x, this.pos.y, this.state);
     }
 
     public String getInfo() {
-        return "Rogue";
+        return "Unit.Rogue";
     }
 }

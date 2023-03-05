@@ -1,3 +1,5 @@
+package Unit;
+
 import java.util.ArrayList;
 
 public class BowMan extends DistantBattle {
@@ -11,13 +13,13 @@ public class BowMan extends DistantBattle {
     }
     @Override
     public String toString() {
-        return String.format("BowMan: %s | Hp: %d | Speed: %d | ATK: %d-%d | DEF: %d | (X,Y): (%d,%d) | Status: %s " +
+        return String.format("Unit.BowMan: %s | Hp: %d | Speed: %d | ATK: %d-%d | DEF: %d | (X,Y): (%d,%d) | Status: %s " +
                         "| Cartriges: %d\n",
                 this.name, this.hp, this.speed, this.damageMin, this.damageMax, this.defense,
                 this.pos.x, this.pos.y, this.state,  this.cartridges);
     }
     public String getInfo() {
-        return "BowMan";
+        return "Unit.BowMan";
     }
 
 }
