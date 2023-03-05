@@ -2,11 +2,11 @@ package BaseHero;
 
 import java.util.ArrayList;
 
-public class Warlock extends DistantBattle {
+public class Sniper extends DistantBattle {
     public Sniper(String name, int x, int y) {
 
-        super(name, 9, 15, 10, 8, 10,
-                x, y, 12, 10);
+        super(name, 15, 15,10, 8, 10, 9,
+                12, y, y, 32);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class Warlock extends DistantBattle {
                 " D:" + defense +
                 " A:" + attack +
                 " Dmg:" + Math.round(Math.abs((damageMin + damageMax) / 2)) +
-                " Shoot:" + cartridges +
+                " Shoot:" + cartridges + " " +
                 state;
     }
 

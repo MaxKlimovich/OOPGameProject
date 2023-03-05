@@ -1,15 +1,16 @@
-package Unit;
+package BaseHero;
 
 import java.util.ArrayList;
 
 public abstract class Magic extends BaseHero {
 
-    protected boolean magic;
+    protected int mana;
+    protected int maxMana;
 
-    public Magic(String name, int speed, int maxHp, int defense, int damageMin, int damageMax,
-                 int x, int y, int attack, boolean magic) {
-        super(name, speed, maxHp, defense, damageMin, damageMax, x, y, attack);
-        this.magic = magic;
+    public Magic(String name, int hp, int maxHp, int defense, int damageMin, int damageMax, int speed, int attack, int x, int y, int mana, int maxMana) {
+        super(name, hp, maxHp, defense, damageMin, damageMax, speed, attack, x, y);
+        this.mana = mana;
+        this.maxMana = maxMana;
     }
 
     @Override

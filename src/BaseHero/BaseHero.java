@@ -1,4 +1,4 @@
-package Unit;
+package BaseHero;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -6,46 +6,53 @@ import java.util.Random;
 public abstract class BaseHero implements GameInterface {
     protected String name;
     protected int hp;
-    protected int speed, attack;
     protected int maxHp, defense, damageMin, damageMax;
+    protected int speed, attack;
     protected String state;
     protected Vector2D pos;
     protected static int heroCnt;
 
 
-    public BaseHero(String name, int speed, int maxHp, int defense, int damageMin, int damageMax,
-                    int x, int y, int attack) {
+    @Override
+    public String toString() {
+        return name +
+                " H:" + Math.round(hp) +
+                " D:" + defense +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((damageMin + damageMax)/2)) +
+                state;
+    }
+
+    public int[] getCoords() {return new int[]{pos.x, pos.y};}
+
+    public BaseHero(String name, int hp, int maxHp, int defense, int damageMin, int damageMax, int speed, int attack,
+                    int x, int y) {
         this.name = name;
-        this.speed = speed;
+        this.hp = hp;
         this.maxHp = maxHp;
-        this.hp = maxHp;
         this.defense = defense;
         this.damageMin = damageMin;
         this.damageMax = damageMax;
-        pos = new Vector2D(x, y);
+        this.speed = speed;
         this.attack = attack;
-        state = "Stand";
+        this.state = "Stand";
+        pos = new Vector2D(x, y);
         heroCnt++;
     }
+
     public static String getName() { // random name
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
 
-    public String toString() {
-        return String.format("Name: %5s | Hp: %2d | Speed: %d | Defense: %d | X,Y: (%d,%d) | State: %s\n",
-                this.name, this.hp, this.speed, this.defense, this.pos.x, this.pos.y, this.state);
-    }
-
-    public String getInfo() {
-        return "Name: " + getName() + "HP: " + this.hp;
-    }
+//    public String toString() {
+//        return String.format("Name: %5s | Hp: %2d | Speed: %d | Defense: %d | X,Y: (%d,%d) | State: %s",
+//                this.name, this.hp, this.speed, this.defense, this.pos.x, this.pos.y, this.state);
+//    }
     public int getSpeed() {return speed; }
     public float getHp() {return hp; }
-
     @Override
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) { }
-
-    protected int findNearest(ArrayList<BaseHero> team) {
+    public int findNearest(ArrayList<BaseHero> team) {
         double min = 100;
         int index = 0;
         for (int i = 0; i < team.size(); i++) {
@@ -56,7 +63,6 @@ public abstract class BaseHero implements GameInterface {
         }
         return index;
     }
-
     protected void getDamage(float damage) {
         hp -= damage;
         if (hp > maxHp) hp = maxHp;
@@ -65,12 +71,7 @@ public abstract class BaseHero implements GameInterface {
         state = "Die";
     }
 
-
-
-//    public void healer(int Hp) {
-//        this.hp = Hp + this.hp > this.maxHp ? this.maxHp : Hp + this.hp;
-//    }
-
+    public StringBuilder getInfo() {return new StringBuilder("");}
 
 }
 

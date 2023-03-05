@@ -1,18 +1,14 @@
-package Unit;
+package BaseHero;
 
 import java.util.ArrayList;
 
 public abstract class DistantBattle extends BaseHero {
-
     int cartridges;
 
-
-
-    public DistantBattle(String name, int speed, int maxHp, int defense, int damageMin, int damageMax,
-                         int x, int y, int attack, int cartridges) {
-        super(name, speed, maxHp, defense, damageMin, damageMax, x, y, attack);
+    public DistantBattle(String name, int hp, int maxHp, int defense, int damageMin, int damageMax,
+                         int speed, int attack, int x, int y, int cartridges) {
+        super(name, hp, maxHp, defense, damageMin, damageMax, speed, attack, x, y);
         this.cartridges = cartridges;
-
     }
 
     @Override
@@ -35,4 +31,16 @@ public abstract class DistantBattle extends BaseHero {
         }
         cartridges--;
     }
+
+    @Override
+    public String toString() {
+        return name +
+                " H:" + Math.round(hp) +
+                " D:" + defense +
+                " A:" + attack +
+                " Dmg:" + Math.round(Math.abs((damageMin + damageMax)/2)) + " " +
+                " Shoot:" + cartridges + " " +
+                state;
+    }
 }
+
