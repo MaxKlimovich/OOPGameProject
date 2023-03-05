@@ -11,6 +11,8 @@ public class Main {
     public static ArrayList<BaseHero> allTeam = new ArrayList<>();
     public static ArrayList<BaseHero> team1 = new ArrayList<>();
     public static ArrayList<BaseHero> team2 = new ArrayList<>();
+    static int dieTeam1 = 0;
+    static int dieTeam2 = 0;
 
     public static void main(String[] args) {
         Scanner user_input = new Scanner(System.in);
@@ -22,13 +24,27 @@ public class Main {
         allTeam.addAll(team2);
         sortTeam(allTeam);
 
-        while (true) {
+        while (true){
             View.view();
             user_input.nextLine();
-            for (BaseHero baseHero : allTeam) {
-                if (team1.contains(baseHero)) baseHero.step(team1, team2);
+            for (BaseHero baseHero: allTeam) {
+                if ( team1.contains(baseHero)) baseHero.step(team1, team2);
                 else baseHero.step(team2, team1);
             }
+            for (BaseHero baseHero: team1) {
+                if (baseHero.getState() == "Die") dieTeam1++;
+            }
+            if (dieTeam1 == 10){
+                System.out.println("******************************************Team Light winner!******************************************");
+                break;
+            } else dieTeam1 = 0;
+            for (BaseHero baseHero: team2) {
+                if (baseHero.getState() == "Die") dieTeam2++;
+            }
+            if (dieTeam2 == 10){
+                System.out.println("******************************************Team Dark winner!******************************************");
+                break;
+            } else dieTeam2 = 0;
         }
     }
     static void createTeam(ArrayList team, int offset, int posY) {
@@ -39,27 +55,26 @@ public class Main {
                     team.add(new Monk(BaseHero.getName(), i + 1, posY));
                     break;
                 case 1:
-                    team.add(new Fermer(BaseHero.getName(), i , posY));
+                    team.add(new Fermer(BaseHero.getName(), i, posY));
                     break;
                 case 2:
-                    team.add(new Pickener(BaseHero.getName(), i , posY));
+                    team.add(new Pickener(BaseHero.getName(), i, posY));
                     break;
                 case 3:
-                    team.add(new BowMan(BaseHero.getName(), i , posY));
+                    team.add(new BowMan(BaseHero.getName(), i, posY));
                     break;
                 case 4:
-                    team.add(new Sniper(BaseHero.getName(), i , posY));
+                    team.add(new Sniper(BaseHero.getName(), i, posY));
                     break;
                 case 5:
-                    team.add(new Rogue(BaseHero.getName(), i , posY));
+                    team.add(new Rogue(BaseHero.getName(), i, posY));
                     break;
                 case 6:
-                    team.add(new Warlock(BaseHero.getName(), i , posY));
+                    team.add(new Warlock(BaseHero.getName(), i, posY));
                     break;
             }
         }
     }
-
     static void sortTeam(ArrayList<BaseHero> team) {
         team.sort(new Comparator<BaseHero>() {
             @Override
@@ -69,11 +84,8 @@ public class Main {
             }
         });
     }
-
-    static String getName() { // random name
-        return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
-    }
 }
+
 
 
 
