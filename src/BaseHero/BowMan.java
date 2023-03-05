@@ -21,7 +21,7 @@ public class BowMan extends DistantBattle {
 
     @Override
     public String toString() {
-        return name +
+        return "\uD83C\uDFF9 BowMan: " +
                 " H:" + Math.round(hp) +
                 " D:" + defense +
                 " A:" + attack +
@@ -30,15 +30,20 @@ public class BowMan extends DistantBattle {
                 state;
     }
 
-
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
-        return builder.append("BowMan:\t").append(BowMan.super.name)
-                .append("\t| ATK:\t").append(BowMan.super.attack)
-                .append("\t|HP:\t").append(BowMan.super.hp)
-                .append(" \t| Shoot:").append(BowMan.super.cartridges)
-                .append("\t|")
-                .append("\t| (X.Y) : ").append(BowMan.super.pos.x).append(".").append(BowMan.super.pos.y);
-
+        return builder.append("\uD83C\uDFF9")
+                .append(BowMan.super.name).append("\t")
+                .append("| ATK:").append(BowMan.super.attack).append(" ")
+                .append("| HP:").append(BowMan.super.hp).append(" ")
+                .append("| Shoot:").append(BowMan.super.cartridges).append(" ")
+                .append("| ").append(" ")
+                .append("| (X.Y): ").append(BowMan.super.pos.x).append(".").append(BowMan.super.pos.y)
+                .append(" ")
+                .append("| ").append("Status:");
+    }
+    public StringBuilder getEmoji() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("\uD83C\uDFF9");
     }
 }

@@ -24,7 +24,7 @@ public class Warlock extends Magic {
 //        }
     @Override
     public String toString() {
-        return name +
+        return "\uD83E\uDDD9\u200D Warlock: " +
                 " HP:" + Math.round(hp) +
                 " MP:" + Math.round(mana) +
                 " D:" + defense +
@@ -35,11 +35,17 @@ public class Warlock extends Magic {
 
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
-        return builder.append("Warlock:\t").append(Warlock.super.name)
-                .append("\t| ATK:\t").append(Warlock.super.attack)
-                .append("\t|HP:\t").append(Warlock.super.hp)
-                .append("\t|MP:\t").append(Warlock.super.mana)
-                .append("\t|")
-                .append("\t| (X.Y) : ").append(Warlock.super.pos.x).append(".").append(Warlock.super.pos.y);
+        return builder.append("\uD83E\uDDD9\u200D")
+                .append(Warlock.super.name).append("\t")
+                .append("| ATK:").append(Warlock.super.attack).append(" ")
+                .append("| HP:").append(Warlock.super.hp).append(" ")
+                .append("|MP:").append(Warlock.super.mana).append(" ")
+                .append("| (X.Y): ").append(Warlock.super.pos.x).append(".").append(Warlock.super.pos.y)
+                .append(" ")
+                .append("| ").append("Status:");
+    }
+    public StringBuilder getEmoji() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("\uD83E\uDDD9\u200D");
     }
 }

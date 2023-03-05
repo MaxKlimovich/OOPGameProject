@@ -22,7 +22,7 @@ public class Monk extends Magic {
 
     @Override
     public String toString() {
-        return name +
+        return "\uD83E\uDDDD\u200D️ Monah: " +
                 " HP:" + Math.round(hp) +
                 " MP:" + Math.round(mana) +
                 " D:" + defense +
@@ -31,14 +31,22 @@ public class Monk extends Magic {
                 state;
     }
 
+
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
-        return builder.append("Monah:\t").append(Monk.super.name)
-                .append("\t| ATK:\t").append(Monk.super.attack)
-                .append("\t|HP:\t").append(Monk.super.hp)
-                .append("\t|MP:\t").append(Monk.super.mana)
-                .append("\t|")
-                .append("\t| (X.Y) : ").append(Monk.super.pos.x).append(".").append(Monk.super.pos.y);
+        return builder.append("\uD83E\uDDDD\u200D️")
+                .append(Monk.super.name).append("\t")
+                .append("| ATK:").append(Monk.super.attack).append(" ")
+                .append("| HP:").append(Monk.super.hp).append(" ")
+                .append("\t|MP:\t").append(Monk.super.mana).append(" ")
+                .append("| (X.Y): ").append(Monk.super.pos.x).append(".").append(Monk.super.pos.y)
+                .append(" ")
+                .append("| ").append("Status:");
+    }
+
+    public StringBuilder getEmoji() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("\uD83E\uDDDD\u200D");
     }
 }
 

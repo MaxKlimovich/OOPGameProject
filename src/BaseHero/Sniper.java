@@ -23,7 +23,7 @@ public class Sniper extends DistantBattle {
 
     @Override
     public String toString() {
-        return name +
+        return "\uD83D\uDEAC Sniper: " +
                 " H:" + Math.round(hp) +
                 " D:" + defense +
                 " A:" + attack +
@@ -34,13 +34,18 @@ public class Sniper extends DistantBattle {
 
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
-        return builder.append("Sniper:\t").append(Sniper.super.name)
-                .append("\t| ATK:\t").append(Sniper.super.attack)
-                .append("\t|HP:\t").append(Sniper.super.hp)
-                .append(" \t| Shoot:").append(Sniper.super.cartridges)
-                .append("\t|")
-                .append("\t| (X.Y) : ").append(Sniper.super.pos.x).append(".").append(Sniper.super.pos.y);
-
+        return builder.append("\uD83D\uDEAC")
+                .append(Sniper.super.name).append("\t")
+                .append("| ATK:").append(Sniper.super.attack).append(" ")
+                .append("| HP:").append(Sniper.super.hp).append(" ")
+                .append("| Shoot:").append(Sniper.super.cartridges).append(" ")
+                .append("| (X.Y): ").append(Sniper.super.pos.x).append(".").append(Sniper.super.pos.y)
+                .append(" ")
+                .append("| ").append("Status:");
+    }
+    public StringBuilder getEmoji() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("\uD83D\uDEAC");
     }
 }
 

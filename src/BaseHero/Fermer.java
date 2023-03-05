@@ -12,19 +12,14 @@ public class Fermer extends BaseHero {
 
     @Override
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
+        if (state.equals("Die")) {hp = 0; return;}
         if (!state.equals("Die")) state = "Stand";
-        System.out.println("Unit.Fermer " + name + " Free " );
+        System.out.println("Fermer " + name + " Free " );
     }
-//    @Override
-//    public String toString() {
-//        return String.format("Unit.Fermer: %s | Hp: %d | Speed: %d | ATK: %d-%d | DEF: %d | (X,Y): (%d,%d) | Status: %s\n",
-//                this.name, this.hp, this.speed, this.damageMin, this.damageMax,
-//                this.defense, this.pos.x, this.pos.y, this.state);
-//    }
 
     @Override
     public String toString() {
-        return name +
+        return "\uD83D\uDC69\u200D\uD83C\uDF3E Fermer: " +
                 " H:" + Math.round(hp) +
                 " D:" + defense +
                 " A:" + attack +
@@ -34,10 +29,16 @@ public class Fermer extends BaseHero {
 
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
-        return builder.append("Fermer:\t").append(Fermer.super.name)
-                .append("\t| ATK:\t").append(Fermer.super.attack)
-                .append("\t|HP:\t").append(Fermer.super.hp)
-                .append("\t|")
-                .append("\t| (X.Y) : ").append(Fermer.super.pos.x).append(".").append(Fermer.super.pos.y);
+        return builder.append("\uD83D\uDC69\u200D\uD83C\uDF3E")
+                .append(Fermer.super.name).append("\t")
+                .append("| ATK:").append(Fermer.super.attack).append(" ")
+                .append("| HP:").append(Fermer.super.hp).append(" ")
+                .append("| (X.Y): ").append(Fermer.super.pos.x).append(".").append(Fermer.super.pos.y)
+                .append(" ")
+                .append("| ").append("Status:");
+    }
+    public StringBuilder getEmoji() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("\uD83D\uDC69\u200D\uD83C\uDF3E");
     }
 }

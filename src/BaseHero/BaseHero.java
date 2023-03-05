@@ -15,7 +15,7 @@ public abstract class BaseHero implements GameInterface {
 
     @Override
     public String toString() {
-        return name +
+        return "\uD83E\uDD34" +
                 " H:" + Math.round(hp) +
                 " D:" + defense +
                 " A:" + attack +
@@ -25,7 +25,8 @@ public abstract class BaseHero implements GameInterface {
 
     public int[] getCoords() {return new int[]{pos.x, pos.y};}
 
-    public BaseHero(String name, int hp, int maxHp, int defense, int damageMin, int damageMax, int speed, int attack,
+    public BaseHero(String name, int hp, int maxHp, int defense,
+                    int damageMin, int damageMax, int speed, int attack,
                     int x, int y) {
         this.name = name;
         this.hp = hp;
@@ -43,11 +44,6 @@ public abstract class BaseHero implements GameInterface {
     public static String getName() { // random name
         return String.valueOf(Names.values()[new Random().nextInt(Names.values().length - 1)]);
     }
-
-//    public String toString() {
-//        return String.format("Name: %5s | Hp: %2d | Speed: %d | Defense: %d | X,Y: (%d,%d) | State: %s",
-//                this.name, this.hp, this.speed, this.defense, this.pos.x, this.pos.y, this.state);
-//    }
     public int getSpeed() {return speed; }
     public float getHp() {return hp; }
     @Override
@@ -70,9 +66,16 @@ public abstract class BaseHero implements GameInterface {
         System.out.println(getInfo() + " " + name + " Death ");
         state = "Die";
     }
+    public StringBuilder getInfo() {
+        return new StringBuilder("");
+    }
 
-    public StringBuilder getInfo() {return new StringBuilder("");}
-
+    public StringBuilder getEmoji() {
+        return new StringBuilder("");
+    }
+    public String getState() {
+        return state;
+    }
 }
 
 

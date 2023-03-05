@@ -11,10 +11,7 @@ public class Melee extends BaseHero {
     @Override
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
 
-        if (state.equals("Die")) {
-            hp = 0;
-            return;
-        }
+        if (state.equals("Die")) {hp = 0; return;}
         int target = findNearest(team2);
         if (target < 2) {
             float damdge = (team2.get(target).defense - attack > 0) ?

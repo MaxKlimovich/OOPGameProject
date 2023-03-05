@@ -9,7 +9,7 @@ public class Pickener extends Melee {
     }
 
     @Override
-    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2)  {
+    public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
         super.step(team1, team2);
     }
 
@@ -24,7 +24,7 @@ public class Pickener extends Melee {
 
     @Override
     public String toString() {
-        return name +
+        return "\uD83D\uDC68\u200D\uD83C\uDFA4 Warrior: " +
                 " H:" + Math.round(hp) +
                 " D:" + defense +
                 " A:" + attack +
@@ -34,10 +34,18 @@ public class Pickener extends Melee {
 
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
-        return builder.append("Warrior:\t").append(Pickener.super.name)
-                .append("\t| ATK:\t").append(Pickener.super.attack)
-                .append("\t|HP:\t").append(Pickener.super.hp)
-                .append("\t|")
-                .append("\t| (X.Y) : ").append(Pickener.super.pos.x).append(".").append(Pickener.super.pos.y);
+        return builder.append("\uD83D\uDC68\u200D\uD83C\uDFA4")
+                .append(Pickener.super.name).append("\t")
+                .append("| ATK:").append(Pickener.super.attack).append(" ")
+                .append("| HP:").append(Pickener.super.hp).append(" ")
+                .append("| (X.Y): ").append(Pickener.super.pos.x).append(".").append(Pickener.super.pos.y)
+                .append(" ")
+                .append("| ").append("Status:");
+    }
+
+    public StringBuilder getEmoji() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("\uD83D\uDC68\u200D\uD83C\uDFA4");
     }
 }
+

@@ -14,17 +14,10 @@ public class Rogue extends Melee {
     public void step(ArrayList<BaseHero> team1, ArrayList<BaseHero> team2) {
         super.step(team1, team2);
     }
-//    @Override
-//    public String toString() {
-//        return String.format("Unit.BowMan: %s | Hp: %d |  Speed: %d | ATK: %d-%d  |  DEF: %d  " +
-//                        "|  (X,Y): (%d,%d)  | Status: %s\n",
-//                this.name, this.hp, this.speed, this.damageMin, this.damageMax,
-//                this.defense, this.pos.x, this.pos.y, this.state);
-//    }
 
     @Override
     public String toString() {
-        return name +
+        return "\uD83E\uDD77 Rogue: " +
                 " H:" + Math.round(hp) +
                 " D:" + defense +
                 " A:" + attack +
@@ -34,10 +27,16 @@ public class Rogue extends Melee {
 
     public StringBuilder getInfo() {
         StringBuilder builder = new StringBuilder();
-        return builder.append("Rogue:\t").append(Rogue.super.name)
-                .append("\t| ATK:\t").append(Rogue.super.attack)
-                .append("\t|HP:\t").append(Rogue.super.hp)
-                .append("\t|")
-                .append("\t| (X.Y) : ").append(Rogue.super.pos.x).append(".").append(Rogue.super.pos.y);
+        return builder.append("\uD83E\uDD77")
+                .append(Rogue.super.name).append("\t")
+                .append("| ATK:").append(Rogue.super.attack).append(" ")
+                .append("| HP:").append(Rogue.super.hp).append(" ")
+                .append("| (X.Y): ").append(Rogue.super.pos.x).append(".").append(Rogue.super.pos.y)
+                .append(" ")
+                .append("| ").append("Status:");
+    }
+    public StringBuilder getEmoji() {
+        StringBuilder builder = new StringBuilder();
+        return builder.append("\uD83E\uDD77");
     }
 }
